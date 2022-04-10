@@ -33,6 +33,28 @@ Page({
       var location1 = app.globalData.location[0];
       var location2 = app.globalData.location[1];
       var poins = ";";
+      var mypoins;
+      //调用距离计算接口
+      for (var i = 0; i < 10; i++) {
+          if(app.globalData.location[i] === undefined)break;
+          poins += app.globalData.location[i] + ";";
+      }
+      poins = poins.slice(1,poins.length);
+      console.log(poins);
+     /* mypoins = poins.split(";");
+      for (let p = 0; p < i; p++) {
+        this.setData({
+          markers: [{
+            iconPath: "../../images/location.png",
+            id: p,
+            latitude: mypoins[p].split(",")[p],
+            longitude: mypoins[p].split(",")[p+1],
+            width: 30,
+            height: 30,
+          }
+        ]
+        })
+      }*/
       this.setData({
         markers: [{
           iconPath: "../../images/location.png",
@@ -41,15 +63,33 @@ Page({
           longitude: m[1],
           width: 30,
           height: 30,
-        }]
+        },      
+        {
+          iconPath: "../../images/终点.png",
+          id: 1,
+          latitude: (e.detail.value.dest.split(","))[0],
+          longitude: (e.detail.value.dest.split(","))[1],
+          width: 50,
+          height: 50,
+        },
+        {
+          iconPath: "../../images/location.png",
+          id: 2,
+          latitude: (location1.split(","))[0],
+          longitude: (location1.split(","))[1],
+          width: 30,
+          height: 30,
+        },
+        {
+          iconPath: "../../images/location.png",
+          id: 3,
+          latitude: (location2.split(","))[0],
+          longitude: (location2.split(","))[1],
+          width: 30,
+          height: 30,
+        }
+      ]
       })
-      //调用距离计算接口
-      for (let i = 0; i < 10; i++) {
-          if(app.globalData.location[i] === undefined)break;
-          poins += app.globalData.location[i] + ";";
-      }
-      poins = poins.slice(1,poins.length);
-      console.log(poins);
       qqmapsdk.direction({
         waypoints:poins + e.detail.value.start,
         mode: 'driving',//可选值：'driving'（驾车）、'walking'（步行）、'bicycling'（骑行），不填默认：'driving',可不填

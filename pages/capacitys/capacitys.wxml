@@ -1,5 +1,0 @@
-<view class='container'>
-  <block wx:for="{{list}}" wx:key="index">
-    <view class='text-content'>{{item}}</view> 
-  </block>
-</view>
