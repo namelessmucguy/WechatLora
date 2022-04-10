@@ -30,8 +30,9 @@ Page({
       var long = _this.data.long;
       var myPoints = lat+','+long;
       var m = e.detail.value.start.split(",");//以“,”为标记分段取数组m[0],m[1]....
-      var location1 = app.globalData.location[1];
-      var location2 = app.globalData.location[2];
+      var location1 = app.globalData.location[0];
+      var location2 = app.globalData.location[1];
+      var poins = ";";
       this.setData({
         markers: [{
           iconPath: "../../images/location.png",
@@ -43,8 +44,14 @@ Page({
         }]
       })
       //调用距离计算接口
+      for (let i = 0; i < 10; i++) {
+          if(app.globalData.location[i] === undefined)break;
+          poins += app.globalData.location[i] + ";";
+      }
+      poins = poins.slice(1,poins.length);
+      console.log(poins);
       qqmapsdk.direction({
-        waypoints:e.detail.value.start+";"+location1+";"+location2,
+        waypoints:poins + e.detail.value.start,
         mode: 'driving',//可选值：'driving'（驾车）、'walking'（步行）、'bicycling'（骑行），不填默认：'driving',可不填
         //from参数不填默认当前地址
         from: myPoints,
@@ -52,7 +59,7 @@ Page({
         success: function (res) {
           console.log(res);
           var ret = res;
-          //var coors = ret.result.routes[0].polyline, pl = [];
+          var coors = ret.result.routes[0].polyline, pl = [];
           //坐标解压（返回的点串坐标，通过前向差分进行压缩）
           var kr = 1000000;
           for (var i = 2; i < coors.length; i++) {

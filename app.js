@@ -59,12 +59,12 @@ App({
        // console.log('received msg:' + message.toString());
           if (String.fromCharCode(message[0]=="L")) 
           {
-            this.globalData.location[parseInt(String.fromCharCode(message[1]))] = (message.slice(2,message.length)).toString();
+            this.globalData.location[parseInt(String.fromCharCode(message[1]))-1] = (message.slice(2,message.length)).toString();
             console.log(this.globalData.location);
           }
           if(String.fromCharCode(message[0]=="C"))
           {
-            this.globalData.capacity[parseInt(String.fromCharCode(message[1]))] = (message.slice(2,message.length)).toString();
+            this.globalData.capacity[parseInt(String.fromCharCode(message[1]))-1] = (message.slice(2,message.length)).toString();
             console.log(this.globalData.capacity);
           }
         }.bind(this))
