@@ -1,0 +1,35 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/capacitys/capacitys"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "Weixin",
+    "navigationBarTextStyle":"black"
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示" 
+    }
+  },
+  "tabBar": {
+    "color": "#a9b7b7",
+    "selectedColor": "#11cd6e",
+    "borderStyle":"white",
+    "list": [{
+      "selectedIconPath": "images/map_on.png",
+      "iconPath": "images/map_off.png",
+      "pagePath": "pages/index/index"
+    }, 
+    {
+      "selectedIconPath": "images/rubbish_on.png",
+      "iconPath": "images/rubbish_off.png",
+      "pagePath": "pages/capacitys/capacitys"
+    }]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}
