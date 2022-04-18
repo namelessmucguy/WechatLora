@@ -57,16 +57,20 @@ App({
     })
      client.on('message', function (_topic, message) {
        // console.log('received msg:' + message.toString());
-          if (String.fromCharCode(message[0]=="L")) 
+          if (String.fromCharCode(message[0])==="L") 
           {
             this.globalData.location[parseInt(String.fromCharCode(message[1]))-1] = (message.slice(2,message.length)).toString();
-            console.log(this.globalData.location);
+            //console.log(this.globalData.location);
           }
-          if(String.fromCharCode(message[0]=="C"))
+          if(String.fromCharCode(message[0])==="C")
           {
             this.globalData.capacity[parseInt(String.fromCharCode(message[1]))-1] = (message.slice(2,message.length)).toString();
-            console.log(this.globalData.capacity);
+            //console.log(this.globalData.capacity);
           }
+          console.log("位置" );
+          console.log(this.globalData.location);
+          console.log("容量" );
+          console.log(this.globalData.capacity);
         }.bind(this))
     },
 })

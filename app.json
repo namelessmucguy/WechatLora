@@ -2,13 +2,14 @@
   "pages":[
     "pages/index/index",
     "pages/logs/logs",
-    "pages/capacitys/capacitys"
+    "pages/capacitys/capacitys",
+    "pages/capacitys_data/capacitys_data"
   ],
   "window":{
-    "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "Weixin",
-    "navigationBarTextStyle":"black"
+    "navigationBarBackgroundColor": "#FAFAFA",
+    "navigationBarTextStyle": "black",
+    "backgroundTextStyle": "dark",
+    "backgroundColor": "#f9f9f9"
   },
   "permission": {
     "scope.userLocation": {

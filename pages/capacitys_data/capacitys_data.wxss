@@ -1,0 +1,4 @@
+/* pages/capacitys_data/capacitys_data.wxss */
+.progress-item{
+    padding: 12px;
+}

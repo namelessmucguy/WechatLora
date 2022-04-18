@@ -2,10 +2,19 @@
 const app = getApp();
 var QQMapWX = require('../../libs/qqmap-wx-jssdk.js');
 var qqmapsdk;
+var timer;
 Page({
     data: {
       long: 113.324520,
       lat: 23.099994,
+      passpoint : "41.845196,123.724788",
+      Capacity_set:0
+  },
+  setcapacity: function (e) {
+    this.setData({
+      Capacity_set: e.detail.value
+    })
+    console.log(e.detail.value)
   },
  /*41.886461,123.937122*/
     onLoad: function () {
@@ -29,11 +38,10 @@ Page({
       var lat = _this.data.lat;
       var long = _this.data.long;
       var myPoints = lat+','+long;
-      var m = e.detail.value.start.split(",");//以“,”为标记分段取数组m[0],m[1]....
+      //var m = _this.data.passpoint.split(",");//以“,”为标记分段取数组m[0],m[1]....
       var location1 = app.globalData.location[0];
       var location2 = app.globalData.location[1];
       var poins = ";";
-      var mypoins;
       //调用距离计算接口
       for (var i = 0; i < 10; i++) {
           if(app.globalData.location[i] === undefined)break;
@@ -55,43 +63,116 @@ Page({
         ]
         })
       }*/
-      this.setData({
-        markers: [{
-          iconPath: "../../images/location.png",
-          id: 0,
-          latitude: m[0],
-          longitude: m[1],
-          width: 30,
-          height: 30,
-        },      
-        {
-          iconPath: "../../images/终点.png",
-          id: 1,
-          latitude: (e.detail.value.dest.split(","))[0],
-          longitude: (e.detail.value.dest.split(","))[1],
-          width: 50,
-          height: 50,
-        },
-        {
-          iconPath: "../../images/location.png",
-          id: 2,
-          latitude: (location1.split(","))[0],
-          longitude: (location1.split(","))[1],
-          width: 30,
-          height: 30,
-        },
-        {
-          iconPath: "../../images/location.png",
-          id: 3,
-          latitude: (location2.split(","))[0],
-          longitude: (location2.split(","))[1],
-          width: 30,
-          height: 30,
-        }
-      ]
-      })
+      if (this.data.Capacity_set == 0) { 
+        this.setData({
+          passpoint : "41.845196,123.724788",
+          markers: [/*{
+            iconPath: "../../images/location.png",
+            id: 0,
+            latitude: m[0],
+            longitude: m[1],
+            width: 30,
+            height: 30,
+          },  */
+          {
+            iconPath: "../../images/终点.png",
+            id: 1,
+            latitude: (e.detail.value.dest.split(","))[0],
+            longitude: (e.detail.value.dest.split(","))[1],
+            width: 50,
+            height: 50,
+          },
+          {
+            iconPath: "../../images/location.png",
+            id: 2,
+            latitude: (location1.split(","))[0],
+            longitude: (location1.split(","))[1],
+            width: 30,
+            height: 30,
+          },
+          {
+            iconPath: "../../images/location.png",
+            id: 3,
+            latitude: (location2.split(","))[0],
+            longitude: (location2.split(","))[1],
+            width: 30,
+            height: 30,
+          },
+          {
+            iconPath: "../../images/location_none.png",
+            id: 4,
+            latitude: 41.851951,
+            longitude: 123.785760,
+            width: 30,
+            height: 30,
+          },
+          {
+            iconPath: "../../images/location_none.png",
+            id: 5,
+            latitude: 41.852951,
+            longitude: 123.786760,
+            width: 30,
+            height: 30,
+          }
+        ]
+        })
+      }
+      if (this.data.Capacity_set == 50) {
+        this.setData({
+          passpoint:"41.845196,123.724788;41.851951,123.785760;41.852951,123.786760",
+          markers: [/*{
+            iconPath: "../../images/location.png",
+            id: 0,
+            latitude: m[0],
+            longitude: m[1],
+            width: 30,
+            height: 30,
+          },  */
+          {
+            iconPath: "../../images/终点.png",
+            id: 1,
+            latitude: (e.detail.value.dest.split(","))[0],
+            longitude: (e.detail.value.dest.split(","))[1],
+            width: 50,
+            height: 50,
+          },
+          {
+            iconPath: "../../images/location.png",
+            id: 2,
+            latitude: (location1.split(","))[0],
+            longitude: (location1.split(","))[1],
+            width: 30,
+            height: 30,
+          },
+          {
+            iconPath: "../../images/location.png",
+            id: 3,
+            latitude: (location2.split(","))[0],
+            longitude: (location2.split(","))[1],
+            width: 30,
+            height: 30,
+          },
+          {
+            iconPath: "../../images/location.png",
+            id: 4,
+            latitude: 41.851951,
+            longitude: 123.785760,
+            width: 30,
+            height: 30,
+          },
+          {
+            iconPath: "../../images/location.png",
+            id: 5,
+            latitude: 41.852951,
+            longitude: 123.786760,
+            width: 30,
+            height: 30,
+          }
+        ]
+        })
+      }
       qqmapsdk.direction({
-        waypoints:poins + e.detail.value.start,
+        waypoints:poins + _this.data.passpoint,//e.detail.value.start,
         mode: 'driving',//可选值：'driving'（驾车）、'walking'（步行）、'bicycling'（骑行），不填默认：'driving',可不填
         //from参数不填默认当前地址
         from: myPoints,

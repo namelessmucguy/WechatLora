@@ -1,0 +1,14 @@
+<!--pages/capacitys_data/capacitys_data.wxml-->
+<!--地图容器-->
+<map
+id="myMap"
+style="width: 100%; height: 300px;"
+scale='16'
+polyline="{{polyline}}"
+markers="{{markers}}"
+>
+</map>
+<view class="progress-item" >
+    <i-progress percent="{{percent}}" status="active"></i-progress>
+</view>
+<view>{{location}}</view>

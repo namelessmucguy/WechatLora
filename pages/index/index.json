@@ -1,3 +1,8 @@
 {
-  "usingComponents": {}
-}
+    "navigationBarTitleText": "LoRa垃圾箱监测",
+    "usingComponents": {
+      "i-panel": "../../dist/panel/index",
+      "i-cell-group": "../../dist/cell-group/index",
+      "i-cell": "../../dist/cell/index"
+    }
+  }
