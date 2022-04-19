@@ -22,14 +22,14 @@ Page({
         qqmapsdk = new QQMapWX({
             key: 'XPSBZ-XP4W6-4T6SP-EGOLV-VMEQO-YVB6K'
         });
-        var location = app.globalData.location[0];
-         //loacation
-         var mythis = this;
-         if (location) {
+        var mythis = this;
+        var location = app.globalData.location[1];
+        if (location) {
             mythis.setData({
                 sta:'在线'
             })
         }
+         //loacation
          mythis.setData({
             markers: [{
               iconPath: "../../images/location.png",
@@ -44,8 +44,8 @@ Page({
         mythis.moveTolocation();
         setInterval(function () {  
             mythis.setData({
-                percent:app.globalData.capacity[0],
-                location:app.globalData.location[0]
+                percent:app.globalData.capacity[1],
+                location:app.globalData.location[1]
             })
           }, 1000) //ms
     },

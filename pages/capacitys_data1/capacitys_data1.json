@@ -1,5 +1,5 @@
 {
-    "navigationBarTitleText": "设备1",
+    "navigationBarTitleText": "设备2",
     "usingComponents": {
       "i-progress": "../../dist/progress/index",
       "i-button": "../../dist/button/index"

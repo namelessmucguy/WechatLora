@@ -17,3 +17,9 @@
 .usermotto {
   margin-top: 200px;
 }
+.setcapacity{
+    text-align:center;
+    align-items:center;
+    justify-content: center;
+    margin: auto;  
+}

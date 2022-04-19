@@ -3,7 +3,8 @@
     "pages/index/index",
     "pages/logs/logs",
     "pages/capacitys/capacitys",
-    "pages/capacitys_data/capacitys_data"
+    "pages/capacitys_data/capacitys_data",
+    "pages/capacitys_data1/capacitys_data1"
   ],
   "window":{
     "navigationBarBackgroundColor": "#FAFAFA",

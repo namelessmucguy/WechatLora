@@ -17,4 +17,4 @@ show-location="true"
 <view class="text">{{location}}</view>
 <view class="text">设备状态</view>
 <view class="text">{{sta}}</view>
-<view class="text">工作频率：433MHZ</view>
+<view class="text">工作频率：868MHZ</view>

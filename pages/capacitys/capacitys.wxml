@@ -1,4 +1,13 @@
     <i-panel class="cell-panel-demo" >
     <i-cell title="设备1" is-link url="/pages/capacitys_data/capacitys_data"></i-cell>
 </i-panel>
+<i-panel class="cell-panel-demo" >
+    <i-cell title="设备2" is-link url="/pages/capacitys_data1/capacitys_data1"></i-cell>
+</i-panel>
+<i-panel class="cell-panel-demo" >
+    <i-cell title="设备3" is-link url="/pages/capacitys_data/capacitys_data"></i-cell>
+</i-panel>
+<i-panel class="cell-panel-demo" >
+    <i-cell title="设备4" is-link url="/pages/capacitys_data/capacitys_data"></i-cell>
+</i-panel>
 
